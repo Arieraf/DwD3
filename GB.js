@@ -2,7 +2,8 @@ const form = document.getElementById("myForm");
 const hasil = document.getElementById("hasil");
 
 form.addEventListener("submit", function(event){
-
+    
+    //halaman tidak refresh saat form dikirim
     event.preventDefault();
 
     const nama = document.getElementById("nama").value;
