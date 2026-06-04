@@ -7,12 +7,31 @@
     display: block;
 }
 
-#col{
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+section{
     margin-bottom: 20px;
-    padding: 15px;
-    
+    padding: 20px;
+    width: 90%;
+    position: relative;
     border: 1px solid black;
 }
+
+main{
+    background-color: white;
+
+    width: 80%;
+
+    margin: 20px auto;
+    padding: 20px;
+
+  
+}
+
+
 
 
 footer{
