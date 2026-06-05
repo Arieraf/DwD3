@@ -1,7 +1,7 @@
 const form = document.getElementById("myForm");
 const listPengeluaran = document.getElementById("listPengeluaran");
 
-
+//mengambil data dari lcoalstorage
 let pengeluaran = JSON.parse(
     localStorage.getItem("pengeluaran")
 ) || [];
@@ -14,9 +14,10 @@ form.addEventListener("submit", function(event){
     event.preventDefault();
 
     const nama = document.getElementById("nama").value;
+    //masalah NaN
     const nomin = Number(document.getElementById("nomin").value);
 
-
+    //validasi
     if(nama === "" || nomin === ""){
 
         alert("Semua input harus diisi!");
@@ -28,10 +29,10 @@ form.addEventListener("submit", function(event){
             nomin: nomin
         };
 
-     
+        //simpanb ke array
         pengeluaran.push(dataBaru);
 
-       
+       //simpan ke localstorage
         localStorage.setItem(
             "pengeluaran",
             JSON.stringify(pengeluaran)
@@ -39,11 +40,13 @@ form.addEventListener("submit", function(event){
 
         renderData();
 
-
+        //koosongkan form
         form.reset();
     }
 
 });
+
+
 
 function renderData() {
 
