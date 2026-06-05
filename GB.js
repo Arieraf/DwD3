@@ -1,40 +1,108 @@
 const form = document.getElementById("myForm");
-const hasil = document.getElementById("hasil");
+const listPengeluaran = document.getElementById("listPengeluaran");
+
+
+let pengeluaran = JSON.parse(
+    localStorage.getItem("pengeluaran")
+) || [];
+
+
+renderData();
 
 form.addEventListener("submit", function(event){
-    
-    //halaman tidak refresh saat form dikirim
+
     event.preventDefault();
 
     const nama = document.getElementById("nama").value;
-    const pesan = document.getElementById("pesan").value;
+    const nomin = Number(document.getElementById("nomin").value);
 
-    const item = document.createElement("li");
 
-    item.classList.add("list-group-item");
+    if(nama === "" || nomin === ""){
 
-    const li = document.createElement("li");
-    li.classList.add("list-group-item");
+        alert("Semua input harus diisi!");
 
-   
-    const strong = document.createElement("strong");  
-    strong.innerHTML = `<i class="bi bi-person-fill"></i> ${nama}`;
+    } else {
 
-    const p = document.createElement("p");
-    p.innerHTML = `${pesan}`;
+        const dataBaru = {
+            nama: nama,
+            nomin: nomin
+        };
 
-    li.appendChild(strong);  
-    li.appendChild(document.createElement("br"));
-    li.appendChild(p);
+     
+        pengeluaran.push(dataBaru);
 
-    hasil.appendChild(li);  
+       
+        localStorage.setItem(
+            "pengeluaran",
+            JSON.stringify(pengeluaran)
+        );
 
-    form.reset();
+        renderData();
+
+
+        form.reset();
+    }
 
 });
 
+function renderData() {
+
+    listPengeluaran.innerHTML = "";
+
+    let total = 0;
+
+    for(let i = 0; i < pengeluaran.length; i++) {
+
+        const item = document.createElement("li");
+
+        item.classList.add(
+            "list-group-item",
+            "d-flex",
+            "justify-content-between",
+            "align-items-center"
+        );
+
+        item.innerHTML = `
+            <div>
+                <strong>${pengeluaran[i].nama}</strong>
+                <br>
+                Rp ${Number(
+                    pengeluaran[i].nomin
+                ).toLocaleString("id-ID")}
+            </div>
+
+            <button
+                class="btn btn-danger btn-sm"
+                onclick="hapusData(${i})">
+                Hapus
+            </button>
+        `;
+
+        listPengeluaran.appendChild(item);
+
+        total += Number(
+        pengeluaran[i].nomin || 0
+        );
+    }
+
+    document.getElementById(
+        "totalPengeluaran"
+    ).textContent =
+        total.toLocaleString("id-ID");
+
+
+}
 
 
 
+function hapusData(index) {
 
+    pengeluaran.splice(index, 1);
 
+    localStorage.setItem(
+        "pengeluaran",
+        JSON.stringify(pengeluaran)
+    );
+
+    renderData();
+}
