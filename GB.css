@@ -1,42 +1,9 @@
-#menu{
-    display: none;
-   
-}
-
-#menu.show{
-    display: block;
-}
-
-
-
-main{
-    background-color: white;
-
-    width: 80%;
-
-    margin: 20px auto;
+body{ 
+    font-family: Arial, Helvetica, sans-serif;
     padding: 20px;
-
-  
 }
 
-
-
-
-footer{
-    background-color: azure;
-    color: black;
-    text-align: center;
-    position: relative;
-    padding: 20px;
-    margin-top: 15px;
-}
-
-.footer-icons {
-    color: blue;
-    display: flex;
-    justify-content: center;
-    gap: 10px; 
-    margin-top: 15px;
-    
+table {
+    width: 90%;
+    border-collapse: collapse;
 }

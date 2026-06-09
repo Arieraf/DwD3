@@ -14,51 +14,33 @@
     
     <title>DumbWays D4</title>
 </head>
+
 <body>
     
-    <main>   
-        <header>
-            Data Pengeluaran
-        </header>
-        
-        <hr>
+     <h2>Data Siswa</h2>
 
+    <input
+        type="text"
+        id="search"
+        placeholder="Cari nama siswa..."
+    >
 
-        <div class="container mt-5">
-        <div class="row">
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Kelas</th>
+                <th>Nilai</th>
+            </tr>
+        </thead>
 
-            <div class="col-md-6">
-                
-                <form id="myForm">
-                    <div class="mb-3">
-                        <label>Jenis Pengeluaran</label>
-                        <input type="text" id="nama" class="form-control">
-                    </div>
+        <tbody id="tableBody"></tbody>
+    </table>
 
-                    <div class="mb-3">
-                        <label>Nominal Harga</label>
-                        <input type="number" id="nomin" class="form-control">
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
-
-                </form>
-            </div>
-
-            
-
-            <div class="col-md-6">
-                <h3>Data Pengeluaran</h3>
-                <ul id="listPengeluaran" class="list-group"></ul>  
-
-                <h5>
-                    Total Pengeluaran : Rp <span id="totalPengeluaran">0</span>
-                </h5>
-            </div>
-        </div>
-    </div>        
-       
-    </main>
+    <div class="average" id="average">
+        Rata-rata Nilai: 0
+    </div>
 
     <!-- <footer>
          Hanya Sebuah Project kecil
